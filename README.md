@@ -1,11 +1,11 @@
 # README
 
-## GROUP <add-group-name>
+## GROUP 7
 
-- Member 1: <add-name>
-- Member 2: <add-name>
-- Member 3: <add-name>
-- Member 4: <add-name>
+- Member 1: Chu Thi Thu Cuc
+- Member 2: Ngo Quoc Anh
+- Member 3: Do Linh Chi
+- Member 4: Ngo Minh Ngoc
 
 ## Starting server
 
