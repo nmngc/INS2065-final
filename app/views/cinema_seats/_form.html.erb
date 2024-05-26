@@ -1,0 +1,38 @@
+<%= form_with(model: cinema_seat) do |form| %>
+<% if cinema_seat.errors.any? %>
+<div id="error_explanation" class="bg-red-50 p-6 rounded text-red-800">
+  <h2 class="text-lg font-semibold mb-3"><%= pluralize(cinema_seat.errors.count, "error") %> prohibited this cinema_seat from being saved:</h2>
+
+  <ul class="list-disc leading-relaxed">
+    <% cinema_seat.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+  <div class="mb-6">
+        <%= form.label :cinema_seat_id, class: label_class %>
+          <%= form.text_field :cinema_seat_id, class: input_class %>
+      </div>
+  <div class="mb-6">
+        <%= form.label :cinema_seat_number, class: label_class %>
+          <%= form.text_field :cinema_seat_number, class: input_class %>
+      </div>
+  <div class="mb-6">
+        <%= form.label :seat_type, class: label_class %>
+          <%= form.text_field :seat_type, class: input_class %>
+      </div>
+  <div class="mb-6">
+        <%= form.label :cinema_hall_id, class: label_class %>
+          <%= form.text_field :cinema_hall_id, class: input_class %>
+      </div>
+
+<%= form.submit class: button_class(theme: 'primary') %>
+
+<% if cinema_seat.persisted? %>
+<%= link_to "Cancel", cinema_seat, class: "text-neutral-700 underline inline-block ml-3" %>
+<% else %>
+<%= link_to "Cancel", cinema_seats_path, class:  "text-neutral-700 underline inline-block ml-3" %>
+<% end %>
+<% end %>

@@ -1,0 +1,38 @@
+<%= form_with(model: location) do |form| %>
+<% if location.errors.any? %>
+<div id="error_explanation" class="bg-red-50 p-6 rounded text-red-800">
+  <h2 class="text-lg font-semibold mb-3"><%= pluralize(location.errors.count, "error") %> prohibited this location from being saved:</h2>
+
+  <ul class="list-disc leading-relaxed">
+    <% location.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+  <div class="mb-6">
+        <%= form.label :location_id, 'Location ID', class: label_class %>
+          <%= form.text_field :location_id, class: input_class %>
+      </div>
+  <div class="mb-6">
+        <%= form.label :cinema_name, class: label_class %>
+          <%= form.text_field :cinema_name, class: input_class %>
+      </div>
+  <div class="mb-6">
+        <%= form.label :location, class: label_class %>
+          <%= form.text_field :location, class: input_class %>
+      </div>
+  <div class="mb-6">
+        <%= form.label :total_cinema_hall, class: label_class %>
+          <%= form.number_field :total_cinema_hall, class: input_class %>
+      </div>
+
+<%= form.submit class: button_class(theme: 'primary') %>
+
+<% if location.persisted? %>
+<%= link_to "Cancel", location, class: "text-neutral-700 underline inline-block ml-3" %>
+<% else %>
+<%= link_to "Cancel", locations_path, class:  "text-neutral-700 underline inline-block ml-3" %>
+<% end %>
+<% end %>

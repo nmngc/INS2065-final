@@ -1,0 +1,33 @@
+<div class="max-w-3xl mx-auto px-4">
+  <div class="flex items-center justify-between">
+    <h1 class="flex-1 font-bold text-3xl">Cinema_seat</h1>
+
+    <div class="flex-wrap lg:flex items-center lg:space-x-3">
+      <%= link_to cinema_seats_path, class: button_class(theme: "transparent") do %>
+      All Cinema_seats
+      <% end %>
+      <%= link_to edit_cinema_seat_path(@cinema_seat), class: button_class(theme:"primary") do %>
+      Edit
+      <% end %>
+    </div>
+  </div>
+
+  <ul class="text-slate-700">
+      <li>
+        <p class="font-semibold">Cinema seat:</p>
+        <p><%= @cinema_seat.cinema_seat_id %></p>
+      </li>
+      <li>
+        <p class="font-semibold">Cinema seat number:</p>
+        <p><%= @cinema_seat.cinema_seat_number %></p>
+      </li>
+      <li>
+        <p class="font-semibold">Seat type:</p>
+        <p><%= @cinema_seat.seat_type %></p>
+      </li>
+      <li>
+        <p class="font-semibold">Cinema hall:</p>
+        <p><%= @cinema_seat.cinema_hall %></p>
+      </li>
+  </ul>
+</div>

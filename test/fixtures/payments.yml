@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  payment_date: 2024-05-25 16:55:45
+  total: 9.99
+  discount: 9.99
+  after_discount: 9.99
+  payment_method: one
+  movie: one
+  customer: one
+  price: 9.99
+
+two:
+  payment_date: 2024-05-25 16:55:45
+  total: 9.99
+  discount: 9.99
+  after_discount: 9.99
+  payment_method: two
+  movie: two
+  customer: two
+  price: 9.99

@@ -1,0 +1,51 @@
+<%= form_with(model: movie) do |form| %>
+<% if movie.errors.any? %>
+<div id="error_explanation" class="bg-red-50 p-6 rounded text-red-800">
+  <h2 class="text-lg font-semibold mb-3"><%= pluralize(movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
+
+  <ul class="list-disc leading-relaxed">
+    <% movie.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+
+  <div class="mb-6">
+    <%= form.label :movie_id, 'Movie ID', class: label_class %>
+      <%= form.text_field :movie_id, class: input_class %>
+    </div>
+  <div class="mb-6">
+        <%= form.label :numerical_order, class: label_class %>
+          <%= form.number_field :numerical_order, class: input_class %>
+      </div>
+  <div class="mb-6">
+        <%= form.label :movie_name, class: label_class %>
+          <%= form.text_field :movie_name, class: input_class %>
+      </div>
+  <div class="mb-6">
+        <%= form.label :premiere, class: label_class %>
+          <%= form.date_field :premiere, class: input_class %>
+      </div>
+  <div class="mb-6">
+        <%= form.label :duration, class: label_class %>
+          <%= form.number_field :duration, class: input_class %>
+      </div>
+  <div class="mb-6">
+        <%= form.label :language, class: label_class %>
+          <%= form.text_field :language, class: input_class %>
+      </div>
+  <div class="mb-6">
+        <%= form.label :category, class: label_class %>
+          <%= form.text_field :category, class: input_class %>
+      </div>
+
+<%= form.submit class: button_class(theme: 'primary') %>
+
+<% if movie.persisted? %>
+<%= link_to "Cancel", movie, class: "text-neutral-700 underline inline-block ml-3" %>
+<% else %>
+<%= link_to "Cancel", movies_path, class:  "text-neutral-700 underline inline-block ml-3" %>
+<% end %>
+<% end %>

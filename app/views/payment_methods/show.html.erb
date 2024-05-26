@@ -1,0 +1,25 @@
+<div class="max-w-3xl mx-auto px-4">
+  <div class="flex items-center justify-between">
+    <h1 class="flex-1 font-bold text-3xl">Payment_method</h1>
+
+    <div class="flex-wrap lg:flex items-center lg:space-x-3">
+      <%= link_to payment_methods_path, class: button_class(theme: "transparent") do %>
+      All Payment_methods
+      <% end %>
+      <%= link_to edit_payment_method_path(@payment_method), class: button_class(theme:"primary") do %>
+      Edit
+      <% end %>
+    </div>
+  </div>
+
+  <ul class="text-slate-700">
+      <li>
+        <p class="font-semibold">Method:</p>
+        <p><%= @payment_method.method_id %></p>
+      </li>
+      <li>
+        <p class="font-semibold">Method name:</p>
+        <p><%= @payment_method.method_name %></p>
+      </li>
+  </ul>
+</div>

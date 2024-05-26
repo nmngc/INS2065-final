@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customer_id: MyString
+  customer_name: MyString
+  phone: MyString
+  mobile_card: MyString
+  reward_point: 1
+  birth_date: 2024-05-25
+  customer_type: MyString
+
+two:
+  customer_id: MyString
+  customer_name: MyString
+  phone: MyString
+  mobile_card: MyString
+  reward_point: 1
+  birth_date: 2024-05-25
+  customer_type: MyString

@@ -1,0 +1,58 @@
+<%= form_with(model: payment) do |form| %>
+<% if payment.errors.any? %>
+<div id="error_explanation" class="bg-red-50 p-6 rounded text-red-800">
+  <h2 class="text-lg font-semibold mb-3"><%= pluralize(payment.errors.count, "error") %> prohibited this payment from being saved:</h2>
+
+  <ul class="list-disc leading-relaxed">
+    <% payment.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+  <div class="mb-6">
+        <%= form.label :payment_id, 'Payment ID',class: label_class %>
+          <%= form.text_field :payment_date, class: input_class %>
+    </div>
+  <div class="mb-6">
+        <%= form.label :payment_date, class: label_class %>
+          <%= form.datetime_field :payment_date, class: input_class %>
+      </div>
+  <div class="mb-6">
+        <%= form.label :total, class: label_class %>
+          <%= form.text_field :total, class: input_class %>
+      </div>
+  <div class="mb-6">
+        <%= form.label :discount, class: label_class %>
+          <%= form.text_field :discount, class: input_class %>
+      </div>
+  <div class="mb-6">
+        <%= form.label :after_discount, class: label_class %>
+          <%= form.text_field :after_discount, class: input_class %>
+      </div>
+  <div class="mb-6">
+        <%= form.label :payment_method_id, class: label_class %>
+          <%= form.text_field :payment_method_id, class: input_class %>
+      </div>
+  <div class="mb-6">
+        <%= form.label :movie_id, class: label_class %>
+          <%= form.text_field :movie_id, class: input_class %>
+      </div>
+  <div class="mb-6">
+        <%= form.label :customer_id, class: label_class %>
+          <%= form.text_field :customer_id, class: input_class %>
+      </div>
+  <div class="mb-6">
+        <%= form.label :price, class: label_class %>
+          <%= form.text_field :price, class: input_class %>
+      </div>
+
+<%= form.submit class: button_class(theme: 'primary') %>
+
+<% if payment.persisted? %>
+<%= link_to "Cancel", payment, class: "text-neutral-700 underline inline-block ml-3" %>
+<% else %>
+<%= link_to "Cancel", payments_path, class:  "text-neutral-700 underline inline-block ml-3" %>
+<% end %>
+<% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_11_022210) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_26_022946) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -64,6 +64,38 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_11_022210) do
     t.index ["subject_id"], name: "index_books_on_subject_id"
   end
 
+  create_table "cinema_halls", force: :cascade do |t|
+    t.string "cinema_hall_id"
+    t.string "cinema_hall_name"
+    t.integer "total_seats"
+    t.bigint "location_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["location_id"], name: "index_cinema_halls_on_location_id"
+  end
+
+  create_table "cinema_seats", force: :cascade do |t|
+    t.string "cinema_seat_id"
+    t.string "cinema_seat_number"
+    t.string "seat_type"
+    t.bigint "cinema_hall_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cinema_hall_id"], name: "index_cinema_seats_on_cinema_hall_id"
+  end
+
+  create_table "customers", force: :cascade do |t|
+    t.string "customer_id"
+    t.string "customer_name"
+    t.string "phone"
+    t.string "mobile_card"
+    t.integer "reward_point"
+    t.date "birth_date"
+    t.string "customer_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
@@ -75,11 +107,90 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_11_022210) do
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
+  create_table "locations", force: :cascade do |t|
+    t.string "location_id"
+    t.string "cinema_name"
+    t.string "location"
+    t.integer "total_cinema_hall"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "movies", force: :cascade do |t|
+    t.integer "numerical_order"
+    t.string "movie_name"
+    t.date "premiere"
+    t.integer "duration"
+    t.string "language"
+    t.string "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "movie_id"
+  end
+
+  create_table "payment_methods", force: :cascade do |t|
+    t.string "method_id"
+    t.string "method_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.datetime "payment_date"
+    t.decimal "total"
+    t.decimal "discount", precision: 5, scale: 2
+    t.decimal "after_discount"
+    t.bigint "payment_method_id", null: false
+    t.bigint "movie_id", null: false
+    t.bigint "customer_id", null: false
+    t.decimal "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "payment_id"
+    t.index ["customer_id"], name: "index_payments_on_customer_id"
+    t.index ["movie_id"], name: "index_payments_on_movie_id"
+    t.index ["payment_method_id"], name: "index_payments_on_payment_method_id"
+  end
+
+  create_table "showtimes", force: :cascade do |t|
+    t.string "show_time_id"
+    t.bigint "movie_id", null: false
+    t.time "show_time"
+    t.date "date_shown"
+    t.bigint "cinema_hall_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cinema_hall_id"], name: "index_showtimes_on_cinema_hall_id"
+    t.index ["movie_id"], name: "index_showtimes_on_movie_id"
+  end
+
   create_table "subjects", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "tickets", force: :cascade do |t|
+    t.bigint "cinema_hall_id", null: false
+    t.bigint "payment_id", null: false
+    t.bigint "movie_id", null: false
+    t.bigint "showtime_id", null: false
+    t.bigint "cinema_seat_id", null: false
+    t.string "seat_type"
+    t.bigint "payment_method_id", null: false
+    t.bigint "customer_id", null: false
+    t.decimal "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "ticket_id"
+    t.index ["cinema_hall_id"], name: "index_tickets_on_cinema_hall_id"
+    t.index ["cinema_seat_id"], name: "index_tickets_on_cinema_seat_id"
+    t.index ["customer_id"], name: "index_tickets_on_customer_id"
+    t.index ["movie_id"], name: "index_tickets_on_movie_id"
+    t.index ["payment_id"], name: "index_tickets_on_payment_id"
+    t.index ["payment_method_id"], name: "index_tickets_on_payment_method_id"
+    t.index ["showtime_id"], name: "index_tickets_on_showtime_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -100,4 +211,18 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_11_022210) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "books", "subjects"
+  add_foreign_key "cinema_halls", "locations"
+  add_foreign_key "cinema_seats", "cinema_halls"
+  add_foreign_key "payments", "customers"
+  add_foreign_key "payments", "movies"
+  add_foreign_key "payments", "payment_methods"
+  add_foreign_key "showtimes", "cinema_halls"
+  add_foreign_key "showtimes", "movies"
+  add_foreign_key "tickets", "cinema_halls"
+  add_foreign_key "tickets", "cinema_seats"
+  add_foreign_key "tickets", "customers"
+  add_foreign_key "tickets", "movies"
+  add_foreign_key "tickets", "payment_methods"
+  add_foreign_key "tickets", "payments"
+  add_foreign_key "tickets", "showtimes"
 end

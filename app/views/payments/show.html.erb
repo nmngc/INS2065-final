@@ -1,0 +1,49 @@
+<div class="max-w-3xl mx-auto px-4">
+  <div class="flex items-center justify-between">
+    <h1 class="flex-1 font-bold text-3xl">Payment</h1>
+
+    <div class="flex-wrap lg:flex items-center lg:space-x-3">
+      <%= link_to payments_path, class: button_class(theme: "transparent") do %>
+      All Payments
+      <% end %>
+      <%= link_to edit_payment_path(@payment), class: button_class(theme:"primary") do %>
+      Edit
+      <% end %>
+    </div>
+  </div>
+
+  <ul class="text-slate-700">
+      <li>
+        <p class="font-semibold">Payment date:</p>
+        <p><%= @payment.payment_date %></p>
+      </li>
+      <li>
+        <p class="font-semibold">Total:</p>
+        <p><%= @payment.total %></p>
+      </li>
+      <li>
+        <p class="font-semibold">Discount:</p>
+        <p><%= @payment.discount %></p>
+      </li>
+      <li>
+        <p class="font-semibold">After discount:</p>
+        <p><%= @payment.after_discount %></p>
+      </li>
+      <li>
+        <p class="font-semibold">Payment method:</p>
+        <p><%= @payment.payment_method %></p>
+      </li>
+      <li>
+        <p class="font-semibold">Movie:</p>
+        <p><%= @payment.movie %></p>
+      </li>
+      <li>
+        <p class="font-semibold">Customer:</p>
+        <p><%= @payment.customer %></p>
+      </li>
+      <li>
+        <p class="font-semibold">Price:</p>
+        <p><%= @payment.price %></p>
+      </li>
+  </ul>
+</div>

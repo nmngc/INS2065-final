@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  show_time_id: MyString
+  movie: one
+  show_time: 2024-05-25 17:05:30
+  date_shown: 2024-05-25
+  cinema_hall: one
+
+two:
+  show_time_id: MyString
+  movie: two
+  show_time: 2024-05-25 17:05:30
+  date_shown: 2024-05-25
+  cinema_hall: two

@@ -1,0 +1,33 @@
+<div class="max-w-3xl mx-auto px-4">
+  <div class="flex items-center justify-between">
+    <h1 class="flex-1 font-bold text-3xl">Location</h1>
+
+    <div class="flex-wrap lg:flex items-center lg:space-x-3">
+      <%= link_to locations_path, class: button_class(theme: "transparent") do %>
+      All Locations
+      <% end %>
+      <%= link_to edit_location_path(@location), class: button_class(theme:"primary") do %>
+      Edit
+      <% end %>
+    </div>
+  </div>
+
+  <ul class="text-slate-700">
+      <li>
+        <p class="font-semibold">Location ID:</p>
+        <p><%= @location.location_id %></p>
+      </li>
+      <li>
+        <p class="font-semibold">Cinema name:</p>
+        <p><%= @location.cinema_name %></p>
+      </li>
+      <li>
+        <p class="font-semibold">Location:</p>
+        <p><%= @location.location %></p>
+      </li>
+      <li>
+        <p class="font-semibold">Total cinema hall:</p>
+        <p><%= @location.total_cinema_hall %></p>
+      </li>
+  </ul>
+</div>

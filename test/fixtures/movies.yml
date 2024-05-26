@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  numerical_order: 1
+  movie_name: MyString
+  premiere: MyString
+  duration: 1
+  language: MyString
+  category: MyString
+
+two:
+  numerical_order: 1
+  movie_name: MyString
+  premiere: MyString
+  duration: 1
+  language: MyString
+  category: MyString

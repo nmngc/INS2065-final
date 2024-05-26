@@ -1,0 +1,57 @@
+<div class="max-w-3xl mx-auto px-4">
+  <div class="flex items-center justify-between">
+    <h1 class="flex-1 font-bold text-3xl">Ticket</h1>
+
+    <div class="flex-wrap lg:flex items-center lg:space-x-3">
+      <%= link_to tickets_path, class: button_class(theme: "transparent") do %>
+      All Tickets
+      <% end %>
+      <%= link_to edit_ticket_path(@ticket), class: button_class(theme:"primary") do %>
+      Edit
+      <% end %>
+    </div>
+  </div>
+
+  <ul class="text-slate-700">
+      <li>
+        <p class="font-semibold">Ticket ID:</p>
+        <p><%= @ticket.ticket_id %></p>
+      </li>
+      <li>
+        <p class="font-semibold">Cinema hall:</p>
+        <p><%= @ticket.cinema_hall %></p>
+      </li>
+      <li>
+        <p class="font-semibold">Payment:</p>
+        <p><%= @ticket.payment %></p>
+      </li>
+      <li>
+        <p class="font-semibold">Movie:</p>
+        <p><%= @ticket.movie %></p>
+      </li>
+      <li>
+        <p class="font-semibold">Showtime:</p>
+        <p><%= @ticket.showtime %></p>
+      </li>
+      <li>
+        <p class="font-semibold">Cinema seat:</p>
+        <p><%= @ticket.cinema_seat %></p>
+      </li>
+      <li>
+        <p class="font-semibold">Seat type:</p>
+        <p><%= @ticket.seat_type %></p>
+      </li>
+      <li>
+        <p class="font-semibold">Payment method:</p>
+        <p><%= @ticket.payment_method %></p>
+      </li>
+      <li>
+        <p class="font-semibold">Customer:</p>
+        <p><%= @ticket.customer %></p>
+      </li>
+      <li>
+        <p class="font-semibold">Price:</p>
+        <p><%= @ticket.price %></p>
+      </li>
+  </ul>
+</div>
