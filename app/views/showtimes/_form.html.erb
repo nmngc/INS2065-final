@@ -12,12 +12,12 @@
 <% end %>
 
   <div class="mb-6">
-        <%= form.label :show_time_id, class: label_class %>
+        <%= form.label :show_time_id, 'Show time ID', class: label_class %>
           <%= form.text_field :show_time_id, class: input_class %>
       </div>
   <div class="mb-6">
         <%= form.label :movie_id, class: label_class %>
-          <%= form.text_field :movie_id, class: input_class %>
+          <%= form.collection_select :movie_id, Movie.all, :id, :movie_name, { prompt: 'Select Movie' }, class: input_class %>
       </div>
   <div class="mb-6">
         <%= form.label :show_time, class: label_class %>
@@ -29,7 +29,7 @@
       </div>
   <div class="mb-6">
         <%= form.label :cinema_hall_id, class: label_class %>
-          <%= form.text_field :cinema_hall_id, class: input_class %>
+          <%= form.collection_select :cinema_hall_id, CinemaHall.all, :id, :cinema_hall_name, { prompt: 'Select Cinema Hall' }, class: input_class %>
       </div>
 
 <%= form.submit class: button_class(theme: 'primary') %>

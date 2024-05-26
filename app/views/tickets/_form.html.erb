@@ -1,62 +1,66 @@
 <%= form_with(model: ticket) do |form| %>
-<% if ticket.errors.any? %>
-<div id="error_explanation" class="bg-red-50 p-6 rounded text-red-800">
-  <h2 class="text-lg font-semibold mb-3"><%= pluralize(ticket.errors.count, "error") %> prohibited this ticket from being saved:</h2>
-
-  <ul class="list-disc leading-relaxed">
-    <% ticket.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-    <% end %>
-  </ul>
+  <% if ticket.errors.any? %>
+  <div id="error_explanation" class="bg-red-50 p-6 rounded text-red-800">
+    <h2 class="text-lg font-semibold mb-3"><%= pluralize(ticket.errors.count, "error") %> prohibited this ticket from being saved:</h2>
+  
+    <ul class="list-disc leading-relaxed">
+      <% ticket.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+  
+    <div class="mb-6">
+        <%= form.label :ticket_id, 'Ticket ID', class: label_class %>
+          <%= form.text_field :ticket_id, class: input_class %>
+        </div>
+        <div class="mb-6">
+        <%= form.label :cinema_hall_id, 'Cinema Hall', class: label_class %>
+        <%= form.select :cinema_hall_id, CinemaHall.all.map { |hall| [hall.cinema_hall_name, hall.id] }, {}, class: input_class %>
+      </div>
+      <div class="mb-6">
+      <%= form.label :payment_id, 'Payment', class: label_class %>
+      <%= form.select :payment_id, Payment.all.map { |payment| [payment.id, payment.id] }, {}, class: input_class %>
+    </div>
+    <div class="mb-6">
+    <%= form.label :movie_id, 'Movie', class: label_class %>
+    <%= form.select :movie_id, Movie.all.map { |movie| [movie.movie_name, movie.id] }, {}, class: input_class %>
+  </div>
+  <div class="mb-6">
+    <%= form.label :showtime_id, 'Showtime', class: label_class %>
+    <%= form.select :showtime_id, Showtime.all.map { |showtime| [showtime.id, showtime.id] }, {}, class: input_class %>
+  </div>
+  
+  <div class="mb-6">
+    <%= form.label :cinema_seat_id, 'Cinema Seat', class: label_class %>
+    <%= form.select :cinema_seat_id, CinemaSeat.all.map { |seat| [seat.cinema_seat_number, seat.id] }, {}, class: input_class %>
+  </div>
+  <div class="mb-6">
+  <%= form.label :seat_type, 'Seat Type', class: label_class %>
+  <%= form.select :seat_type, CinemaSeat.distinct.pluck(:seat_type), {}, class: input_class %>
 </div>
-<% end %>
 
+  
   <div class="mb-6">
-      <%= form.label :ticket_id, 'Ticket ID', class: label_class %>
-        <%= form.text_field :cinema_hall_id, class: input_class %>
-      </div>
+    <%= form.label :payment_method_id, 'Payment Method', class: label_class %>
+    <%= form.select :payment_method_id, PaymentMethod.all.map { |method| [method.method_name, method.id] }, {}, class: input_class %>
+  </div>
+  
   <div class="mb-6">
-        <%= form.label :cinema_hall_id, class: label_class %>
-          <%= form.text_field :cinema_hall_id, class: input_class %>
-      </div>
-  <div class="mb-6">
-        <%= form.label :payment_id, class: label_class %>
-          <%= form.text_field :payment_id, class: input_class %>
-      </div>
-  <div class="mb-6">
-        <%= form.label :movie_id, class: label_class %>
-          <%= form.text_field :movie_id, class: input_class %>
-      </div>
-  <div class="mb-6">
-        <%= form.label :showtime_id, class: label_class %>
-          <%= form.text_field :showtime_id, class: input_class %>
-      </div>
-  <div class="mb-6">
-        <%= form.label :cinema_seat_id, class: label_class %>
-          <%= form.text_field :cinema_seat_id, class: input_class %>
-      </div>
-  <div class="mb-6">
-        <%= form.label :seat_type, class: label_class %>
-          <%= form.text_field :seat_type, class: input_class %>
-      </div>
-  <div class="mb-6">
-        <%= form.label :payment_method_id, class: label_class %>
-          <%= form.text_field :payment_method_id, class: input_class %>
-      </div>
-  <div class="mb-6">
-        <%= form.label :customer_id, class: label_class %>
-          <%= form.text_field :customer_id, class: input_class %>
-      </div>
-  <div class="mb-6">
-        <%= form.label :price, class: label_class %>
-          <%= form.text_field :price, class: input_class %>
-      </div>
-
-<%= form.submit class: button_class(theme: 'primary') %>
-
-<% if ticket.persisted? %>
-<%= link_to "Cancel", ticket, class: "text-neutral-700 underline inline-block ml-3" %>
-<% else %>
-<%= link_to "Cancel", tickets_path, class:  "text-neutral-700 underline inline-block ml-3" %>
-<% end %>
-<% end %>
+    <%= form.label :customer_id, 'Customer', class: label_class %>
+    <%= form.select :customer_id, Customer.all.map { |customer| [customer.id, customer.id] }, {}, class: input_class %>
+  </div>
+    <div class="mb-6">
+          <%= form.label :price, class: label_class %>
+            <%= form.text_field :price, class: input_class %>
+        </div>
+  
+  <%= form.submit class: button_class(theme: 'primary') %>
+  
+  <% if ticket.persisted? %>
+  <%= link_to "Cancel", ticket, class: "text-neutral-700 underline inline-block ml-3" %>
+  <% else %>
+  <%= link_to "Cancel", tickets_path, class:  "text-neutral-700 underline inline-block ml-3" %>
+  <% end %>
+  <% end %>

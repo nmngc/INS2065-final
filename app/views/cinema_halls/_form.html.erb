@@ -1,7 +1,7 @@
 <%= form_with(model: cinema_hall) do |form| %>
 <% if cinema_hall.errors.any? %>
 <div id="error_explanation" class="bg-red-50 p-6 rounded text-red-800">
-  <h2 class="text-lg font-semibold mb-3"><%= pluralize(cinema_hall.errors.count, "error") %> prohibited this cinema_hall from being saved:</h2>
+  <h2 class="text-lg font-semibold mb-3"><%= pluralize(cinema_hall.errors.count, "error") %> prohibited this cinema hall from being saved:</h2>
 
   <ul class="list-disc leading-relaxed">
     <% cinema_hall.errors.full_messages.each do |message| %>
@@ -12,7 +12,7 @@
 <% end %>
 
   <div class="mb-6">
-        <%= form.label :cinema_hall_id, class: label_class %>
+        <%= form.label :cinema_hall_id, 'Cinema Hall ID', class: label_class %>
           <%= form.text_field :cinema_hall_id, class: input_class %>
       </div>
   <div class="mb-6">
@@ -24,8 +24,8 @@
           <%= form.number_field :total_seats, class: input_class %>
       </div>
   <div class="mb-6">
-        <%= form.label :location_id, class: label_class %>
-          <%= form.text_field :location_id, class: input_class %>
+      <%= form.label :location_id, 'Location ID', class: label_class %>
+      <%= form.select :location_id, @locations, {}, class: input_class %>
       </div>
 
 <%= form.submit class: button_class(theme: 'primary') %>

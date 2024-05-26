@@ -12,8 +12,8 @@
 <% end %>
 
   <div class="mb-6">
-        <%= form.label :payment_id, 'Payment ID',class: label_class %>
-          <%= form.text_field :payment_date, class: input_class %>
+      <%= form.label :payment_id, 'Payment ID', class: label_class %>
+        <%= form.text_field :payment_id, class: input_class %>
     </div>
   <div class="mb-6">
         <%= form.label :payment_date, class: label_class %>
@@ -32,16 +32,16 @@
           <%= form.text_field :after_discount, class: input_class %>
       </div>
   <div class="mb-6">
-        <%= form.label :payment_method_id, class: label_class %>
-          <%= form.text_field :payment_method_id, class: input_class %>
+        <%= form.label :payment_method_id, 'Payment Method', class: label_class %>
+          <%= form.select :payment_method_id, @payment_methods.map { |pm| [pm.method_name, pm.id] }, {}, class: input_class %>
       </div>
   <div class="mb-6">
-        <%= form.label :movie_id, class: label_class %>
-          <%= form.text_field :movie_id, class: input_class %>
+        <%= form.label :movie_id, 'Movie', class: label_class %>
+          <%= form.select :movie_id, @movies.map { |movie| [movie.movie_name, movie.id] }, {}, class: input_class %>
       </div>
   <div class="mb-6">
-        <%= form.label :customer_id, class: label_class %>
-          <%= form.text_field :customer_id, class: input_class %>
+        <%= form.label :customer_id, 'Customer', class: label_class %>
+          <%= form.select :customer_id, @customers.map { |customer| [customer.id, customer.id] }, {}, class: input_class %>
       </div>
   <div class="mb-6">
         <%= form.label :price, class: label_class %>

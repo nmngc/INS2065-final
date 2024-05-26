@@ -10,18 +10,25 @@ class PaymentsController < ApplicationController
   def show
   end
 
-  # GET /payments/new
   def new
     @payment = Payment.new
+    @payment_methods = PaymentMethod.all
+    @movies = Movie.all
+    @customers = Customer.all
   end
 
-  # GET /payments/1/edit
   def edit
+    @payment_methods = PaymentMethod.all
+    @movies = Movie.all
+    @customers = Customer.all
   end
 
   # POST /payments or /payments.json
   def create
     @payment = Payment.new(payment_params)
+    @payment_methods = PaymentMethod.all
+    @movies = Movie.all
+    @customers = Customer.all
 
     respond_to do |format|
       if @payment.save
@@ -65,6 +72,6 @@ class PaymentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def payment_params
-      params.require(:payment).permit(:payment_date, :total, :discount, :after_discount, :payment_method_id, :movie_id, :customer_id, :price)
+      params.require(:payment).permit(:payment_id, :payment_date, :total, :discount, :after_discount, :payment_method_id, :movie_id, :customer_id, :price)
     end
 end

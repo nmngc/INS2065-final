@@ -9,6 +9,9 @@
       <%= link_to edit_customer_path(@customer), class: button_class(theme:"primary") do %>
       Edit
       <% end %>
+      <%= link_to new_payment_method_path, class: button_class(theme: "transparent") + " ml-3" do %>
+        Add New
+      <% end %>
     </div>
   </div>
 

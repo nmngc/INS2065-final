@@ -65,6 +65,6 @@ class TicketsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ticket_params
-      params.require(:ticket).permit(:cinema_hall_id, :payment_id, :movie_id, :showtime_id, :cinema_seat_id, :seat_type, :payment_method_id, :customer_id, :price)
+      params.require(:ticket).permit(:ticket_id, :cinema_hall_id, :payment_id, :movie_id, :showtime_id, :cinema_seat_id, :seat_type, :payment_method_id, :customer_id, :price)
     end
 end

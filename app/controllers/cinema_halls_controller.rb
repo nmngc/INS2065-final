@@ -13,10 +13,12 @@ class CinemaHallsController < ApplicationController
   # GET /cinema_halls/new
   def new
     @cinema_hall = CinemaHall.new
+    @locations = Location.all.pluck(:cinema_name, :id)
   end
 
   # GET /cinema_halls/1/edit
   def edit
+    @locations = Location.all.pluck(:cinema_name, :id)
   end
 
   # POST /cinema_halls or /cinema_halls.json

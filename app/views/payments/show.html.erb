@@ -9,10 +9,17 @@
       <%= link_to edit_payment_path(@payment), class: button_class(theme:"primary") do %>
       Edit
       <% end %>
+      <%= link_to new_payment_method_path, class: button_class(theme: "transparent") + " ml-3" do %>
+        Add New
+      <% end %>
     </div>
   </div>
 
   <ul class="text-slate-700">
+      <li>
+        <p class="font-semibold">Payment ID:</p>
+        <p><%= @payment.payment_id %></p>
+      </li>
       <li>
         <p class="font-semibold">Payment date:</p>
         <p><%= @payment.payment_date %></p>
@@ -31,15 +38,15 @@
       </li>
       <li>
         <p class="font-semibold">Payment method:</p>
-        <p><%= @payment.payment_method %></p>
+        <p><%= @payment.payment_method.method_name %></p>
       </li>
       <li>
         <p class="font-semibold">Movie:</p>
-        <p><%= @payment.movie %></p>
+        <p><%= @payment.movie.movie_name %></p>
       </li>
       <li>
         <p class="font-semibold">Customer:</p>
-        <p><%= @payment.customer %></p>
+        <p><%= @payment.customer.customer_id %></p>
       </li>
       <li>
         <p class="font-semibold">Price:</p>

@@ -1,20 +1,23 @@
 <div class="max-w-3xl mx-auto px-4">
   <div class="flex items-center justify-between">
-    <h1 class="flex-1 font-bold text-3xl">Cinema_seat</h1>
+    <h1 class="flex-1 font-bold text-3xl">Cinema seat</h1>
 
     <div class="flex-wrap lg:flex items-center lg:space-x-3">
       <%= link_to cinema_seats_path, class: button_class(theme: "transparent") do %>
-      All Cinema_seats
+      All Cinema seats
       <% end %>
       <%= link_to edit_cinema_seat_path(@cinema_seat), class: button_class(theme:"primary") do %>
       Edit
+      <% end %>
+      <%= link_to new_payment_method_path, class: button_class(theme: "transparent") + " ml-3" do %>
+        Add New
       <% end %>
     </div>
   </div>
 
   <ul class="text-slate-700">
       <li>
-        <p class="font-semibold">Cinema seat:</p>
+        <p class="font-semibold">Cinema seat ID:</p>
         <p><%= @cinema_seat.cinema_seat_id %></p>
       </li>
       <li>
@@ -27,7 +30,7 @@
       </li>
       <li>
         <p class="font-semibold">Cinema hall:</p>
-        <p><%= @cinema_seat.cinema_hall %></p>
+        <p><%= @cinema_seat.cinema_hall.cinema_hall_name %></p>
       </li>
   </ul>
 </div>

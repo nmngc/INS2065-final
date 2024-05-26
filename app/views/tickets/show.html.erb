@@ -9,6 +9,9 @@
       <%= link_to edit_ticket_path(@ticket), class: button_class(theme:"primary") do %>
       Edit
       <% end %>
+      <%= link_to new_payment_method_path, class: button_class(theme: "transparent") + " ml-3" do %>
+        Add New
+      <% end %>
     </div>
   </div>
 
@@ -19,23 +22,23 @@
       </li>
       <li>
         <p class="font-semibold">Cinema hall:</p>
-        <p><%= @ticket.cinema_hall %></p>
+        <p><%= @ticket.cinema_hall.cinema_hall_name %></p>
       </li>
       <li>
         <p class="font-semibold">Payment:</p>
-        <p><%= @ticket.payment %></p>
+        <p><%= @ticket.payment.payment_id %></p>
       </li>
       <li>
         <p class="font-semibold">Movie:</p>
-        <p><%= @ticket.movie %></p>
+        <p><%= @ticket.movie.movie_name %></p>
       </li>
       <li>
         <p class="font-semibold">Showtime:</p>
-        <p><%= @ticket.showtime %></p>
+        <p><%= @ticket.showtime.show_time_id %></p>
       </li>
       <li>
         <p class="font-semibold">Cinema seat:</p>
-        <p><%= @ticket.cinema_seat %></p>
+        <p><%= @ticket.cinema_seat.cinema_seat_number %></p>
       </li>
       <li>
         <p class="font-semibold">Seat type:</p>
@@ -43,11 +46,11 @@
       </li>
       <li>
         <p class="font-semibold">Payment method:</p>
-        <p><%= @ticket.payment_method %></p>
+        <p><%= @ticket.payment_method.method_name %></p>
       </li>
       <li>
         <p class="font-semibold">Customer:</p>
-        <p><%= @ticket.customer %></p>
+        <p><%= @ticket.customer.customer_id %></p>
       </li>
       <li>
         <p class="font-semibold">Price:</p>

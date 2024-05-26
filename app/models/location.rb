@@ -3,4 +3,5 @@ class Location < ApplicationRecord
     validates_uniqueness_of :location_id, :cinema_name
     validates_numericality_of :total_cinema_hall
 
+    has_many :cinema_halls
 end

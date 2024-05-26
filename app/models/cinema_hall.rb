@@ -3,4 +3,5 @@ class CinemaHall < ApplicationRecord
   validates_uniqueness_of :cinema_hall_id
 
   belongs_to :location
+  has_many :cinema_seats
 end

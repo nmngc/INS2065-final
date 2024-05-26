@@ -12,7 +12,7 @@
 <% end %>
 
   <div class="mb-6">
-        <%= form.label :cinema_seat_id, class: label_class %>
+        <%= form.label :cinema_seat_id, 'Cinema Seat ID', class: label_class %>
           <%= form.text_field :cinema_seat_id, class: input_class %>
       </div>
   <div class="mb-6">
@@ -25,7 +25,7 @@
       </div>
   <div class="mb-6">
         <%= form.label :cinema_hall_id, class: label_class %>
-          <%= form.text_field :cinema_hall_id, class: input_class %>
+          <%= form.collection_select :cinema_hall_id, CinemaHall.all, :id, :cinema_hall_name, {}, { class: input_class } %>
       </div>
 
 <%= form.submit class: button_class(theme: 'primary') %>
